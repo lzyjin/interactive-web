@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Web</title>
+  <style>
+    .world {
+      width: 80vw;
+      height: 80vh;
+      background-color: #fff000;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      /* 원근감 속성 추가 ( 3d 효과 ) */
+      /* 부모 태그에 이 속성을 추가하면 실제 눈으로 보는것같이 리얼하다 (균일하지 않다) */
+      /* 값의 의미 : 내 눈부터 대상까지의 거리 (값이 작을수록 변화가 극대화됨) */
+      /* perspective: 100px; */
+      /* perspective: 500px; */
+      /* perspective: 1000px; */
+      
+    }
+    .card {
+      width: 100px;
+      height: 150px;
+      background-color: red;
+
+      margin: 1em;
+      /* em을 사용한 이유: 이 요소의 폰트사이즈의 절반크기(px)로 사용하겠다 -> 폰트사이즈에 따라 유동적으로 둥글기 값이 변함 */
+      border-radius: 0.5em;
+      /* rem을 사용한 이유: root(html태그)의 폰트사이즈(기본16px)를 기준으로 1.5배 크기를 사용하겠다 */
+      font-size: 1.5rem;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      /* transform: rotateY(45deg); */
+      /* 균일하게 보이게 하고싶으면 대상에 transform안에 perspective를 추가한다 */
+      transform: perspective(500px) rotateY(45deg);
+    }
+  </style>
+</head>
+<body>
+  <!-- 
+    카드를 3d로 만들려고 한다
+    이것은 css의 rotateY로 구현 가능하다
+    하지만 대상의 부모가 3d여야 자식을 3d로 만들 수 있다
+  -->
+
+  <div class="world">
+    <div class="card">CARD</div>
+    <div class="card">CARD</div>
+    <div class="card">CARD</div>
+  </div>
+</body>
+</html>

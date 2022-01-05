@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Web</title>
+  <style>
+    .characters {
+      background-color: gold;
+    }
+    .characters .ilbuni {
+      display: inline-block;
+    }
+    .ilbuni {
+      width: 100px;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    .special {
+      border: 10px dashed red;
+    }
+  </style>
+  <!-- <script>
+    // load는 모든 리소스가 로드될때까지 기다린다.
+    // 이미지가 무거워도 로드될때까지 기다린다
+    // 지금은 일분이c 요소만 있으면 되니까 비효율적이다.
+    // 그럴때 쓰는게 load가 아니라 DOMContentLoaded이다 
+    // DOMContentLoaded는 dom컨텐트만 로드되면 바로 실행시킨다
+
+    // jquery에서 사용하는
+    $(function() {
+      //...
+    });
+    // 이 구문이 
+    window.addEventListener('DOMContentLoaded', function() {
+      //...
+    })
+    // 와 동일하다
+
+    // window.addEventListener('load', function() {
+    window.addEventListener('DOMContentLoaded', function() {
+
+      // 이 공간에서 선언한 변수는 함수안에서 선언되었기 때문에 전역변수가 아니다.
+      const ilbuni = document.querySelector('.ilbuni:nth-child(3)');
+      console.log(ilbuni);
+
+      // ilbuni.addEventListener('click', function() {
+      //   // ilbuni.classList.add('special');
+      //   ilbuni.classList.toggle('special');
+      // });
+
+      function clickIlbuniHandler() {
+        ilbuni.classList.toggle('special');
+      }
+      ilbuni.addEventListener('click', clickIlbuniHandler);
+    });
+  </script> -->
+</head>
+
+<body>
+  <div class="characters">
+    <div class="ilbuni a">
+      <img src="images/ilbuni_0.png" alt="일분이">
+    </div>
+    <div class="ilbuni b">
+      <img src="images/ilbuni_1.png" alt="일분이">
+    </div>
+    <div class="ilbuni c">
+      <img src="images/ilbuni_2.png" alt="일분이">
+    </div>
+  </div>
+  <div class="ilbuni d">
+    <img src="images/ilbuni_3.png" alt="일분이">
+  </div>
+
+  <!-- <script>
+    // 전역변수 
+    // 전역변수를 남발하면 좋지 않다 
+    // -> 모두가 공유하는 공간이기때문에 내가 사용한 변수명을 다른 개발자가 새로운 값을 할당해서 사용하면 원치않는 결과가 발생하기 때문에 
+    // -> 전역변수를 최소화 하자
+    const ilbuni = document.querySelector('.ilbuni:nth-child(3)');
+
+    // const clickIlbuniHandler = function() {
+    //   ilbuni.classList.toggle('special');
+    // }
+
+    // const clickIlbuniHandler = () => {
+    //   ilbuni.classList.toggle('special');
+    // }
+
+    // 전역변수 
+    function clickIlbuniHandler() {
+      ilbuni.classList.toggle('special');
+    }
+
+    ilbuni.addEventListener('click', clickIlbuniHandler);
+  </script> -->
+
+  <!-- 전역변수를 피하려면 함수안에 넣으면 된다 -->
+  <script>
+    // 처음에 한번만 실행하면 되는 초기화 함수이므로 이름을 짓지 않는 방법으로 한다
+    // function ilbun() {
+    (function() {
+      const ilbuni = document.querySelector('.ilbuni.c');
+      function clickIlbuniHandler() {
+        ilbuni.classList.toggle('special');
+      }
+      ilbuni.addEventListener('click', clickIlbuniHandler);
+    })();
+    // ilbun();
+  </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Web</title>
+  <style>
+    .container {
+      display: flex;
+
+      /* 기본값 row */
+      /* flex-direction: row; */
+      /* flex-direction: column; */
+      /* flex-direction: row-reverse; */
+      /* flex-direction: column-reverse; */
+
+      /* 기본값 flex-start */
+      /* justify-content은 메인축위에서 정렬시키는 것 (오뎅 꼬치의 꼬치(축)방향으로 정렬하는 것)*/
+      /* justify-content: flex-start; */
+      /* justify-content: flex-end; */
+      /* justify-content: center; */
+      /* justify-content: space-between; */
+      /* justify-content: space-around; */
+
+      /* 기본값 stretch */
+      /* 오뎅들을 오뎅꼬치의 수직방향으로 정렬. 오뎅을 뜯어내는 방향으로 정렬 */
+      /* align-items: stretch; */
+      /* align-items: flex-start; */
+      /* align-items: flex-end; */
+      /* align-items: center; */
+
+      height: 80vh;
+      background-color: gray;
+    }
+    .item {
+      /* 부모가 display flex이면 자식의 높이를 설정하지 않으면 부모의 높이값이 된다 */
+
+      /* flex-grow는 items가 차지하는 비율을 정함, width가 아니라 내용물을 제외한 여백의 비율을 정한다 */
+      flex-grow: 1;
+
+      /* 원래 컨텐츠(내용물)이 차지하는 비율을 정한다 */
+      /* 기본값 auto */
+      /* flex-basis: auto; */
+      /* flex-basis: 0;라고 하면 item안의 내용물이 차지하는 너비가 0이 되면서 flex-grow:1이 너비가 균등하게 나눠진것으로 적용된다 */
+      flex-basis: 0;
+
+      /* flex: 1;은 flex-grow: 1;과 flex-basis: auto;의 축약형  */
+      flex: 1;
+      /* chrome 개발자도구로 얘를 열어보면 
+      flex-grow: 1;
+      flex-shrink: 1;
+      flex-basis: 0%; */
+
+      padding: 2em;
+      border: 3px solid black;
+      background-color: #fff;
+      font-size: 3rem;
+    }
+    /* .item:nth-child(1) { flex-grow: 1; }
+    .item:nth-child(2) { flex-grow: 5; }
+    .item:nth-child(3) { flex-grow: 2; }
+    .item:nth-child(4) { flex-grow: 3; }
+    .item:nth-child(5) { flex-grow: 1; } */
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="item">AAA</div>
+    <div class="item">B</div>
+    <div class="item">CCCCCC</div>
+    <div class="item">DDD</div>
+    <div class="item">E</div>
+  </div>
+</body>
+</html>

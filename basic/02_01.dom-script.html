@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Web</title>
+  <style>
+    .characters {
+      background-color: gold;
+    }
+    .characters .ilbuni {
+      display: inline-block;
+    }
+    .ilbuni {
+      width: 100px;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    .special {
+      border: 10px dashed red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="characters">
+    <div class="ilbuni a">
+      <img src="images/ilbuni_0.png" alt="일분이">
+    </div>
+    <div class="ilbuni b">
+      <img src="images/ilbuni_1.png" alt="일분이">
+    </div>
+    <div class="ilbuni c">
+      <img src="images/ilbuni_2.png" alt="일분이">
+    </div>
+  </div>
+  <div class="ilbuni d">
+    <img src="images/ilbuni_3.png" alt="일분이">
+  </div>
+
+  <script>
+    // const ilbuni = document.querySelector('.ilbuni'); //여러개의 요소여도 첫번째것만 가져온다
+
+    // const ilbuni = document.querySelectorAll('.ilbuni'); // 모든 일분이를 가져온다
+    // console.log(ilbuni);
+
+    const ilbuniGroup = document.querySelectorAll('.ilbuni');
+    // 일분이c를 가져오려면?
+    // document.querySelectorAll에 담긴 결과는 NodeList라는 배열과 비슷한 애라서 ilbuniGroup[2]이렇게 인덱스로 접근하면 된다
+    // console.log(ilbuniGroup[2]);
+
+    console.log(document.querySelector('.ilbuni:nth-child(2)'));
+
+    
+
+    // 속성 추가
+    const char = document.querySelector('.characters');
+    char.setAttribute('data-id', 123);
+
+    // 속성에 접근
+    console.log(char.getAttribute('data-id'));
+
+    // 엘리먼트를 붙이기 (추가)
+    const pElem = document.createElement('p');
+    console.log(pElem);
+    pElem.innerHTML = '<a href="#">안녕</a>???';
+    const charactersElem = document.querySelector('.characters');
+    charactersElem.appendChild(pElem);
+
+    // 엘리먼트를 떼기 (삭제)
+    charactersElem.removeChild(document.querySelector('.b'));
+
+    // class다루기
+    // class 붙이기
+    const ilbuni = document.querySelector('.ilbuni');
+    ilbuni.classList.add('special');
+
+    // className 을 사용하면 다른 class는 삭제되고 special 클래스만 남기 때문
+    // ilbuni.className = 'special';
+
+    ilbuni.classList.remove('ilbuni');
+
+    // toggle
+    // ilbuni.classList.toggle('ilbuni');
+    // ilbuni.classList.toggle('ilbuni');
+    ilbuni.classList.toggle('special');
+    ilbuni.classList.toggle('special');
+  </script>
+</body>
+</html>

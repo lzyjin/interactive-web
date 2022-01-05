@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Web - 예제 3개의 문1</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+    html, body {
+      font-size: 16px;
+    }
+    .stage {
+      width: 100vw;
+      height: 100vh;
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .door {
+      width: 100px;
+      height: 150px;
+      position: relative;
+      margin: 0 10px;
+    }
+    .door-back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+    }
+    .door-body {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .door:nth-child(1) .door-body { background-color: rgba(255, 0, 0, 0.7); }
+    .door:nth-child(2) .door-body { background-color: rgba(255, 255, 0, 0.7); }
+    .door:nth-child(3) .door-body { background-color: rgba(0, 128, 0, 0.7); }
+    .ilbuni {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100px;
+      height: 100px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+    }
+    .door:nth-child(1) .ilbuni { background-image: url(images/ilbuni_1.png); }
+    .door:nth-child(2) .ilbuni { background-image: url(images/ilbuni_2.png); }
+    .door:nth-child(3) .ilbuni { background-image: url(images/ilbuni_3.png); }
+    </style>
+</head>
+<body>
+  <div class="stage">
+    <div class="door">
+      <div class="door-back"></div>
+      <div class="ilbuni"></div>
+      <div class="door-body"></div>
+    </div>
+    <div class="door">
+      <div class="door-back"></div>
+      <div class="ilbuni"></div>
+      <div class="door-body"></div>
+    </div>
+    <div class="door">
+      <div class="door-back"></div>
+      <div class="ilbuni"></div>
+      <div class="door-body"></div>
+    </div>
+  </div>
+</body>
+</html>

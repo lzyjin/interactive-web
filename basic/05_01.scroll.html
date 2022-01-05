@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Web - 스크롤 이벤트</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+    }
+    .content {
+      height: 1000vh;
+      background-color: yellowgreen;
+      padding: 20%;
+    }
+    .output {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      font-size: 2rem;
+      font-weight: 200;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+    .ilbuni {
+      width: 100px;
+      margin: 20px auto;
+      transition: 1s;
+    }
+    .ilbuni.zoom {
+      transform: scale(2);
+    }
+  </style>
+</head>
+<body>
+  <div class="output">OUTPUT</div>
+  <div class="content">
+    <p>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique, porro velit. Ab tempora iste suscipit repellat, nisi aspernatur iusto ipsum, exercitationem culpa minima recusandae consequatur vitae aliquid officiis asperiores saepe dolorum ex pariatur voluptatum? Reprehenderit commodi temporibus minima quisquam voluptate consequuntur soluta? Ducimus minima ullam autem, repellendus, laborum vero deleniti neque nam exercitationem, dolorem unde. Quod asperiores dicta, magnam reprehenderit error illo maxime eaque inventore, ratione quam alias nulla cumque repellat a est laborum harum unde eos voluptatibus? Voluptatem blanditiis ducimus nostrum modi consequuntur natus consectetur, vitae, numquam eveniet molestiae adipisci! Harum sit dolorum dolor alias nesciunt et vitae ullam culpa! Qui, placeat praesentium. Molestiae eius illo officiis corrupti ipsa aspernatur non explicabo distinctio numquam placeat quia provident sint, fugiat labore aliquam obcaecati neque dicta qui laudantium? Obcaecati, perspiciatis aliquam officia, voluptatum eos, soluta corrupti laudantium eveniet voluptate recusandae minus ad voluptatem. Eius, voluptate! Animi cumque dignissimos ullam, nemo modi quibusdam dicta laborum! Magnam in aliquam assumenda ab inventore voluptatibus, harum quod excepturi deleniti dolores, dignissimos incidunt, adipisci culpa cumque earum amet eligendi perferendis minima laborum accusantium velit? Magni pariatur, provident odio architecto vitae unde animi eveniet iste quibusdam tempore quo quod esse, assumenda distinctio, ipsam repellendus dolorem laboriosam. Vel cupiditate voluptas odio tenetur quas excepturi, nostrum amet nulla nihil culpa aliquid officia accusantium laborum natus provident corporis! Alias sed, hic accusantium quisquam tenetur eum ipsa doloribus, ut deleniti similique eligendi. Quibusdam aliquam deleniti beatae pariatur temporibus incidunt impedit quod quia exercitationem, quam tempore illo voluptas blanditiis dolorum adipisci, sapiente cum animi, nobis non sit possimus ut consequatur necessitatibus? Magnam laboriosam amet velit vitae. Numquam, saepe. Voluptatem natus commodi, atque nam soluta iste minima odio mollitia libero amet, autem fugit ipsam. Temporibus, magni modi? Ea quibusdam tenetur asperiores blanditiis illo optio et sit minima corporis reiciendis, quasi amet doloremque itaque?
+    </p>
+    <figure class="ilbuni">
+      <img src="images/ilbuni_0.png" alt="일분이">
+    </figure>
+  </div>
+
+  <script>
+    (function() {
+      const outputElem = document.querySelector('.output');
+      const ilbuniElem = document.querySelector('.ilbuni');
+
+      function showValue() {
+        // outputElem.innerHTML = window.pageYOffset;
+        // outputElem.innerHTML = ilbuniElem.offsetTop; // 처음 위치만 가져옴
+        // outputElem.innerHTML = ilbuniElem.getBoundingClientRect().top; // 현재 이 엘리먼트의 위치를 파악할 수 있음
+        // console.log(ilbuniElem.getBoundingClientRect());
+        // DOMRect {x: 582.5, y: 341, width: 100, height: 269, top: 341, …}
+        // bottom: 610
+        // height: 269
+        // left: 582.5
+        // right: 682.5
+        // top: 341
+        // width: 100
+        // x: 582.5
+        // y: 341
+        let posY = ilbuniElem.getBoundingClientRect().top;
+        outputElem.innerHTML = posY;
+
+        console.log(window.innerHeight);
+
+        if( posY < window.innerHeight * 0.2 ) { // 일분이의 top이 스크롤이 브라우저 높이의 20%를 지날때
+          ilbuniElem.classList.add('zoom');
+        } else {
+          ilbuniElem.classList.remove('zoom');
+        }
+      }
+
+      window.addEventListener('scroll', function() {
+        showValue();
+      });
+    })();
+  </script>
+</body>
+</html>

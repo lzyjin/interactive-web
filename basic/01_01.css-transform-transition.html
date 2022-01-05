@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Web</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+    .box-container {
+      display: flex;
+    }
+    .box {
+      width: 100px;
+      /* width: auto; */
+      height: 100px;
+      background-color: rgba(255, 255, 0, 0.7);
+      border: 2px solid #000;
+
+      /* 축약형 */
+      /* transition: 1s; */
+      /* 위 코드의 뜻 */
+      /* transition-property: all;
+      transition-duration: 1s;
+      transition-timing-function: ease;
+      transition-delay: 0s; */
+
+      /* linear는 애니메이션이 등속도로 움직여서 약간 로봇같이 움직인다고 느껴진다. */
+      /* 기본값인 ease는 가속도로 움직이는것. -> 애니메이션이 자연스러움  */
+      /* transition: 1s linear; */
+
+      /* 띠용 하는 느낌으로도 만들 수 있다 (개발자툴에서 곡선모양 클릭하면 자유자재로 테스트 해볼 수 있다) */
+      /* transition: 1s cubic-bezier(0.23, 0.1, 0.49, 1.7); */
+
+      /* 트랜지션 딜레이는 지속시간 뒤에 한칸 띄고 작성 */
+      /* transition: 1s 2s; */
+
+      /* transition속성은 수치(숫자)로 표현되는 값을 가진 것들에 적용할 수 있다 */
+      transition: 2s;
+    }
+    .box:hover {
+      /* width: 200px;
+      height: 200px; */
+
+      /* transform: scale(2) rotate(25deg); */
+      /* transform: skewY(-30deg); */
+      /* transform: translate(30px, 10px); */
+      /* transform: translateY(-30px); */
+
+      /* transform: scale(1.5);  */
+      /* transform-origin의 default는 center center (50% 50%) */
+      /* transform-origin: right bottom; */
+      /* transform-origin: 0% 0%; left top과 같은 의미 */
+      /* transform-origin: 100% 100%; right bottom과 같은 의미 */
+
+      /* transform: rotate(30deg);
+      transform-origin: 100% 100%; */
+
+      /* transform: scale(2); */
+
+      /* .box의 width가 100px이 아니라 auto라면, width에는 트랜지션이 적용되지 않는다 */
+      width: 200px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1>CSS Transform & CSS Transition</h1>
+  <p>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nostrum soluta fuga quis deleniti excepturi! Perspiciatis id dolore perferendis qui doloremque natus, maxime dicta dolorem. Perferendis ad laboriosam accusantium mollitia culpa perspiciatis non repudiandae voluptatem earum expedita. Necessitatibus beatae quidem impedit laboriosam repellat commodi, praesentium pariatur asperiores minima expedita nisi qui quibusdam debitis facilis quas veniam ipsum dignissimos vero. Aperiam corrupti consequatur earum in animi consequuntur doloremque ratione totam facilis dolor quidem porro beatae a, aut et quia dignissimos voluptatum eum ab! Nostrum debitis obcaecati maxime! Aliquam, corporis. Itaque aut, tenetur ab ut sint soluta minus atque nesciunt culpa eligendi voluptatem.
+  </p>
+  <div class="box-container">
+    <div class="box">A</div>
+    <div class="box">B</div>
+    <div class="box">C</div>
+    <div class="box">D</div>
+    <div class="box">E</div>
+    <div class="box">F</div>
+  </div>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium incidunt dolores saepe harum nihil tempore aperiam cupiditate corrupti repellendus, vero odio. Recusandae modi officia provident nisi doloribus. Autem molestias molestiae ullam voluptate error, maiores cum dolor aspernatur eum. Doloribus architecto quae mollitia corporis fuga ut exercitationem dolore. Nulla quis perspiciatis, non reprehenderit consequatur error ipsum corrupti, neque explicabo asperiores quidem ab? Autem sint provident, repudiandae officiis minima aspernatur optio eligendi amet blanditiis repellendus fugit commodi excepturi quasi impedit mollitia architecto esse dolorem ea soluta fuga ducimus nam. Odit officiis cupiditate rerum! Porro sunt omnis fugit saepe praesentium iure necessitatibus vel.
+  </p>
+</body>
+</html>

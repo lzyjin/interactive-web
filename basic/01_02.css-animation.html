@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Web</title>
+  <style>
+    /* 애니메이션에서 변화가 있는 지점은 keyframe이라고 한다 */
+    @keyframes sample-ani {
+      0% {
+        transform: translate(0, 0);
+      }
+      50% {
+        transform: translate(300px, 0);
+      }
+      100% {
+        transform: translate(400px, 500px);
+      }
+    }
+    .box {
+      /* 텍스트 중앙정렬 */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 100px;
+      height: 100px;
+      background-color: #fff000;
+      border: 2px solid #000;
+
+      /* linear(등속도)를 써주지 않으면 기본으로 ease(가속도)이기 때문에 */
+      /* 👉 infinite: 애니메이션 무한 반복 */
+      /* animation: sample-ani 2s linear infinite; */
+
+      /* 위 축약형을 길게 쓰면 아래가 된다 */
+      /* animation-duration: 2s;
+      animation-timing-function: linear;
+      animation-delay: 0s;
+      animation-iteration-count: infinite;
+      animation-direction: normal;
+      animation-fill-mode: none;
+      animation-play-state: running;
+      animation-name: sample-ani; */
+
+
+      /* 이렇게도 쓸 수 있다 */
+      /* animation: sample-ani 2s cubic-bezier(0, 0, 0.43, 1.46) infinite; */
+
+      /* 👉 [애니메이션의 실행 횟수를 지정하는 속성] animation-iteration-count: infinite말고 숫자로 쓰면 딱 그 횟수만큼 애니메이션되고 종료한다 */
+      /* animation: sample-ani 2s linear 3; */
+
+
+      /* 이대로라면 400px, 500px인 지점까지 이동했다가 뚝 끊기고 0px, 0px에서 시작해버린다 */
+      /* animation: sample-ani 2s linear infinite; */
+      
+      /* 👉 [애니메이션의 방향을 지정하는 속성] animation-direction: alternate; */
+      /* alternate 키워드를 사용하면 끝점에서 시작점으로 애니메이션되며 되돌아간다 */
+      /* animation: sample-ani 2s linear infinite alternate; */
+
+      /* 👉 animation-direction: reverse; : 애니메이션이 100%에서 시작해서 0%에서 끝난다 */
+      /* animation: sample-ani 2s linear infinite reverse; */
+
+      /* 👉 animation-direction: alternate-reverse; 100%에서 시작해서 0%로 끝나는데, 애니메이션이 끝나면 왔던길을 되돌아간다 */
+      /* animation: sample-ani 2s linear infinite alternate-reverse; */
+
+      /* 👉 [애니메이션이 끝난 후 위치] animation-fill-mode 기본값은 none
+      
+      /* 👉  animation-fill-mode: forwards; : 100%의 위치에서 끝남 */
+      /* animation: sample-ani 3s linear forwards; */
+
+      /* 👉 animation-fill-mode: backwards; : 0%의 위치에서 끝남 */
+      animation: sample-ani 3s linear backwards;
+    }
+    .box:hover {
+      /* [애니메이션 재생 상태를 지정하는 속성] animation-play-state 기본값은 running */
+      animation-play-state: paused;
+    }
+  </style>
+</head>
+<body>
+  <h1>CSS Animation</h1>
+  <div class="box">BOX</div>
+</body>
+</html>

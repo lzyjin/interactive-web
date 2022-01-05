@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Web</title>
+  <style>
+    .characters {
+      background-color: gold;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+    .characters .ilbuni {
+      display: inline-block;
+    }
+    .ilbuni {
+      width: 100px;
+      cursor: pointer;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    .special {
+      border: 10px dashed red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="characters">
+    <div class="ilbuni a">
+      <img src="images/ilbuni_0.png" alt="일분이">
+    </div>
+    <div class="ilbuni b">
+      <img src="images/ilbuni_1.png" alt="일분이">
+    </div>
+    <div class="ilbuni c">
+      <img src="images/ilbuni_2.png" alt="일분이">
+    </div>
+    <div class="ilbuni d">
+      <img src="images/ilbuni_3.png" alt="일분이">
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const characters = document.querySelector('.characters');
+      function clickHandler(e) {
+        // this는 클릭이벤트가 걸려있는 애 
+        console.log(this);
+
+        // 기본으로 들어있는 파라미터인 e는 이벤트 객체
+        console.log(e);
+
+        // e.currentTarget와 this는 똑같다
+        // 둘다 이벤트가 발생한 엘리먼트를 가르킴 
+        console.log(e.currentTarget);
+
+        // e.target은 내가 클릭한 딱 그요소를 가르킴
+        console.log(e.target);
+      }
+      characters.addEventListener('click', clickHandler);
+    })();
+  </script>
+</body>
+</html>

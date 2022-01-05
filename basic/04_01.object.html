@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Web - Object</title>
+</head>
+<body>
+  <h1>Object</h1>
+  
+  <script>
+    // 객체 만들기
+    // const person = new Object(); 이 방법은 잘 안쓴다
+
+    const person = {};
+    // 속성, property
+    person.name = '일분이';
+    person.age = 10;
+    // 메소드, method
+    person.introduce = function() {
+      console.log('안녕하세요? 저는 일분이이고 나이는 10살이에요.');
+    }
+    // person.introduce();
+
+    // alert(1);
+    // window.alert(1);
+
+
+
+    // 이렇게 작성하는 방법을 많이 쓴다
+    const person2 = {
+      nickname: '일분이',
+      age: 10, 
+      introduce: function() {
+        console.log('안녕하세요? 저는 ' + this.nickname + '이고 나이는 ' + this.age + '이에요.');
+        // name은 window.name을 가르켜서 에러가 안나고 빈문자열이 출력된다
+        // this는 이 메소드를 실행하는 주체를 가르킨다
+        // 여기서 this는 person2
+      }
+    };
+
+    const person3 = {
+      name: '이분이',
+      age: 8, 
+      introduce: function() {
+        console.log('안녕하세요? 저는 ' + this.name + '이고 나이는 ' + this.age + '이에요.');
+      }
+    };
+    person2.introduce();
+    person3.introduce();
+
+
+    // 아래는 let foo;(전역변수 선언)와 같다
+    function foo() {
+      console.log(this);
+      // 여기서 this는 window 전역객체를 가르킨다
+    }
+    foo();
+  </script>
+</body>
+</html>

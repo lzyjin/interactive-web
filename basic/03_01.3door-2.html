@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Web - 예제 3개의 문2-css로</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+    html, body {
+      font-size: 16px;
+    }
+    .stage {
+      width: 100vw;
+      height: 100vh;
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* perspective: 300px; */
+    }
+    .door {
+      width: 100px;
+      height: 150px;
+      position: relative;
+      margin: 0 10px;
+      /* transform-style: preserve-3d; */
+    }
+    .door-back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      overflow: hidden;
+    }
+    .door-body {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transition: 0.5s;
+      transform-origin: left;
+    }
+    .door:nth-child(1) .door-body { background-color: rgba(255, 0, 0, 0.7); }
+    .door:nth-child(2) .door-body { background-color: rgba(255, 255, 0, 0.7); }
+    .door:nth-child(3) .door-body { background-color: rgba(0, 128, 0, 0.7); }
+    .ilbuni {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100px;
+      height: 100px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      /* transition: 0.5s;
+      transition-delay: 0.5s; */
+      transition: 0.5s 0.5s;
+    }
+    .door:nth-child(1) .ilbuni { 
+      background-image: url(images/ilbuni_1.png);
+      /* 일분이를 이동시키는데, 부드럽게 이동시키는 여러 방법 중 가장 부드럽게 가장 성능좋은 방법은 transform을 사용하는 것이다 */
+      /* 상대단위(px이 아닌 %)를 적극적으로 사용해라. 특히 반응형으로 작업할 때는 더더욱. 더욱 효율적이다. */
+      transform: translate3d(-100%, 0, 0);
+    }
+    .door:nth-child(2) .ilbuni { 
+      background-image: url(images/ilbuni_2.png); 
+      transform: translate3d(-100%, 0, 0);
+    }
+    .door:nth-child(3) .ilbuni { 
+      background-image: url(images/ilbuni_3.png); 
+      transform: translate3d(100%, 0, 0);
+    }
+
+    .door:hover .door-body { transform: perspective(500px) rotateY(-110deg);  }
+    /* .door:hover .door-body { transform: rotateY(100deg);  } */
+    .door:hover .ilbuni { transform: translate3d(0, 0, 0); }
+    </style>
+</head>
+<body>
+  <!-- 일분이가 안보이다가 문에 호버하면 보여야되기 때문에 .door-back안에 있는게 낫겠다. 그러면 .door-back에 overflow:hidden하면 되니까 -->
+  <!-- translateX보다 translate3D를 사용하는게 하드웨어 가속을 사용(GPU사용)해서 퍼포먼스가 좋다 -->
+  <div class="stage">
+    <div class="door">
+      <div class="door-back">
+        <div class="ilbuni"></div>
+      </div>
+      <div class="door-body"></div>
+    </div>
+    <div class="door">
+      <div class="door-back">
+        <div class="ilbuni"></div>
+      </div>
+      <div class="door-body"></div>
+    </div>
+    <div class="door">
+      <div class="door-back">
+        <div class="ilbuni"></div>
+      </div>
+      <div class="door-body"></div>
+    </div>
+  </div>
+</body>
+</html>

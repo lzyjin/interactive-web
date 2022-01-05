@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Web - Object</title>
+</head>
+<body>
+  <h1>Object</h1>
+  
+  <script>
+    // person이 천개라면..?
+    // -> 매번 복붙하기엔 너무 비효율적이다
+
+    // 구조는 같되 속성의 값은 다른 애들을 만들기 위해 틀을 만들것이다
+    // -> 생성자 함수 사용 
+    // 생성자 (constructor)
+    function Person(nickname, age) {
+      // 여기에서 this가 window를 가르키는게 아니라 개별객체를 가르키는 이유는?
+      // new 키워드를 사용했기 때문
+      // 함수를 생성자로서 호출되게 하고 싶으면 new 키워드를 앞에 붙이면 된다
+      this.nickname = nickname;
+      this.age = age;
+      this.introduce = function() {
+        console.log('안녕하세요? 저는 ' + this.nickname + '이고 나이는 ' + this.age + '살이에요.');
+      }
+    }
+
+    // 인스턴스(instance)
+    // person1과 person2는 인스턴스
+    const person1 = new Person('일분이', 10);
+    const person2 = new Person('이분이', 8);
+
+    person1.introduce();
+    person2.introduce();
+
+  </script>
+</body>
+</html>

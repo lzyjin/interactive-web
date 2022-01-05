@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transition/Animation Event</title>
+  <style>
+    @keyframes ball-ani {
+      from {
+        transform: translate3d(0, 0, 0);
+      }
+      to {
+        transform: translate3d(200px, 200px, 0);
+      }
+    }
+    .ball {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: red;
+      transition: 1s;
+      /* alternate: ball이 왔다갔다 움직임 */
+      /* forwards : animation이 to의 위치에서 끝남 */
+      /* animation: ball-ani 1s 3 alternate forwards; */
+    }
+    .ball.end {
+      border: 10px solid teal;
+    }
+  </style>
+</head>
+<body>
+  <h1>event: animationstart, animationend, animationiteration</h1>
+  <div class="ball"></div>
+  <script>
+    const ballElem = document.querySelector('.ball');
+
+    ballElem.addEventListener('click', function() {
+      ballElem.style.animation = 'ball-ani 1s 3 alternate forwards';
+    });
+
+    ballElem.addEventListener('animationend', function(e) {
+    // ballElem.addEventListener('animationstart', function(e) {
+      ballElem.classList.add('end');
+    });
+
+    ballElem.addEventListener('animationiteration', function(e) {
+      console.log('반복!');
+      // 반복이 될때 일어나는 이벤트라서
+      // 첫번째는 제외된다
+      // 그래서 총 2번 출력됌
+    });
+  </script>
+</body>
+</html>

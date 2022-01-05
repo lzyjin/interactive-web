@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=640px">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>iframe 썸네일 맞추기 - mobile</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+    body {
+      border: 1px solid #eee;
+      width: 640px;
+      margin: 0 auto;
+    }
+    .section {
+    }
+    #index .visual { 
+      position: relative; 
+      width: 100%;
+      height: 650px;
+      overflow: hidden; 
+    }
+    #index .visual .myframe { 
+      position: absolute; 
+      top: 0; 
+      left: 50%; 
+      transform: translateX(-50%); 
+      width:1156px; 
+      height:650px;
+    } 
+    #index .visual .myframe iframe { 
+      position: absolute; 
+      top: 50%; 
+      left: 50%; 
+      transform: translate(-50%, -50%); 
+      /* width: 1156px; 
+      height: 650px;  */
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat; 
+      background-position: center center; 
+      background-size: cover; 
+    } 
+  </style>
+</head>
+<body id="index">
+  <!-- style="background-image:url(http://gonylab8.speedgabia.com/saint354/thumbnail/fullandmain.jpg); background-size:cover;" -->
+  <div class="section visual">
+      <div class="myframe">
+        <iframe src="http://player.vimeo.com/video/661376729?autoplay=1&loop=1&background=1" 
+          autoplay loop muted  id="MyVideo" frameborder="0" 
+          allowfullscreen data-ready="true"
+          style="background-image:url(thum.jpg); background-size:cover;">
+        </iframe>
+        <!-- background-image 크기가 myframe의 높이와 같고, 높이의 16:9 비율에 맞는 너비여야함 -->
+      </div>
+  </div>
+  <div class="section">
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. At voluptas nemo architecto ad dolores eum. Vel quod voluptatum consectetur dicta aperiam dolorem, corrupti magnam rerum adipisci sequi alias ab aliquam impedit eum quibusdam perferendis quas, fugit quae? Perferendis porro nam corrupti repellat, aliquid, alias perspiciatis id numquam facilis impedit illo? Impedit earum provident, tempore architecto corrupti doloremque ipsum, incidunt adipisci ipsam quas optio, officia molestias corporis rem dolorum! Esse quas maiores quia ducimus rerum consectetur ut aspernatur quaerat inventore impedit tenetur placeat, nam quod a blanditiis quo. Nobis, repellendus vel quibusdam error cum nam vitae quasi aliquid qui voluptates? Maiores.
+    </p>
+  </div>
+  <div class="section">
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. At voluptas nemo architecto ad dolores eum. Vel quod voluptatum consectetur dicta aperiam dolorem, corrupti magnam rerum adipisci sequi alias ab aliquam impedit eum quibusdam perferendis quas, fugit quae? Perferendis porro nam corrupti repellat, aliquid, alias perspiciatis id numquam facilis impedit illo? Impedit earum provident, tempore architecto corrupti doloremque ipsum, incidunt adipisci ipsam quas optio, officia molestias corporis rem dolorum! Esse quas maiores quia ducimus rerum consectetur ut aspernatur quaerat inventore impedit tenetur placeat, nam quod a blanditiis quo. Nobis, repellendus vel quibusdam error cum nam vitae quasi aliquid qui voluptates? Maiores.
+    </p>
+  </div>
+  <div class="section">
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. At voluptas nemo architecto ad dolores eum. Vel quod voluptatum consectetur dicta aperiam dolorem, corrupti magnam rerum adipisci sequi alias ab aliquam impedit eum quibusdam perferendis quas, fugit quae? Perferendis porro nam corrupti repellat, aliquid, alias perspiciatis id numquam facilis impedit illo? Impedit earum provident, tempore architecto corrupti doloremque ipsum, incidunt adipisci ipsam quas optio, officia molestias corporis rem dolorum! Esse quas maiores quia ducimus rerum consectetur ut aspernatur quaerat inventore impedit tenetur placeat, nam quod a blanditiis quo. Nobis, repellendus vel quibusdam error cum nam vitae quasi aliquid qui voluptates? Maiores.
+    </p>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://player.vimeo.com/api/player.js"></script>
+  <script>
+    //function - video
+    function videoControl(control){
+      // videoScale(control);
+      $(window).on("resize",function(){ 
+        // videoScale(control); 
+      });
+      $(window).on("scroll",function(){
+        let thisTop = $(this).scrollTop();
+        let stopTop = $("section > div:first-child").height() - 100;
+        let player = new Vimeo.Player(control);
+        if(thisTop > stopTop) player.pause();
+        else player.play();
+      });
+    }
+    // 모바일에서는 이 함수 절대! 안쓰기 
+    // function - videocontrol
+    // function videoScale(control){
+    //   control.style.width = Math.round($(window).height() / 9 * 16) + "px";
+    //   control.style.height = Math.round($(window).width() / 16 * 9) + "px";
+    // }
+
+    videoControl(document.querySelector(".myframe iframe"));
+  </script>
+</body>
+</html>

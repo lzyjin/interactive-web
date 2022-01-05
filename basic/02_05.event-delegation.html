@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Web - 이벤트 위임 & 코드 개선</title>
+  <style>
+    .stage {
+      overflow: hidden;
+      background-color: gold;
+      width: 100vw;
+      height: 75vw;
+      position: relative;
+    }
+    .ilbuni {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      cursor: pointer;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+      animation: moving infinite alternate;
+    }
+    .ilbuni.a {
+      background-image: url(images/ilbuni_0.png);
+      left: 5%;
+      bottom: 5%;
+      animation-duration: 2s;
+    }
+    .ilbuni.b {
+      background-image: url(images/ilbuni_1.png);
+      left: 10%;
+      bottom: 25%;
+      animation-duration: 3s;
+    }
+    .ilbuni.c {
+      background-image: url(images/ilbuni_2.png);
+      left: 2%;
+      bottom: 50%;
+      animation-duration: 4s;
+    }
+
+    @keyframes moving {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(90vw);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="stage">
+    <div class="ilbuni a"></div>
+    <div class="ilbuni b"></div>
+    <div class="ilbuni c"></div>
+  </div>
+
+  <script>
+    // 움직이는 일분이를 클릭해서 없애라! 
+    // 이벤트 위임
+    // 이벤트 위임은 메모리 관리 측면에서도 좋지만
+    // 스크롤을 하면 그 다음데이터가 로드되는 sns같은 경우
+    // 그 아이템(데이터)들을 감싸고 있는 부모에 이벤트리스너를 만들고
+    // 클릭된 애 (e.target)을 조사하면 매번 아이템 하나하나에 이벤트리스너를 걸지 않아도 이벤트가 발생한 지점을 찾을 수 있으므로 매우 편리하다 
+    (function() {
+      const stage = document.querySelector('.stage');
+
+      function clickHandler(e) {
+        // console.log(this); // stage
+        console.log(e.target);
+        // console.log(e.currentTarget);
+
+        // stage.removeChild(e.target);
+        // 일분이가 아닌 stage를 클릭하면 에러난다
+
+        // -> e.target이 일분이일때만 삭제되도록
+        // class를 가지고 있는지 판별하려면
+        // classList.contains('클래스명') 
+        if( e.target.classList.contains('ilbuni') ) {
+          stage.removeChild(e.target);
+        }
+      }
+      
+      stage.addEventListener('click', clickHandler);
+    })();
+  </script>
+</body>
+</html>

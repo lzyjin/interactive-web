@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Web - Object&Prototype</title>
+  <style>
+    .card {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 100px;
+      height: 150px;
+      border: 2px solid #000;
+      border-radius: 10px;
+      font-size: 3rem;
+      font-weight: 900;
+    }
+  </style>
+</head>
+<body>
+  <h1>Object</h1>
+  
+  <script>
+    // 카드 만들기 - 
+    function Card(number, color) {
+      this.number = number;
+      this.color = color;
+      // 우리가 만든 메소드를 호출해야 실행되니까
+      // 이 메소드는 이 생성자가 가지고 있는거라서 this.init()으로 호출
+      this.init();
+    }
+
+    // Card.prototype.xxx 형태로 뭔가를 추가하는 방식(추가만 하고 뭔가 바꾸는게 아님)이 아니라 
+    // Card.prototype = {}; 이런식(객체리터럴 형태)으로 프로토타입 객체를 다시 세팅할 때 (새로운 객체를 다시 만듦)
+    // 원래 있던 contstructor를 다시 세팅해줘야한다
+
+    // 공통기능은 prototype안의 메소드로 만든다
+    Card.prototype = {
+      // 원래 존재하는 생성자를 작성해야함
+      contructor: Card,
+
+      // 우리가 원하는 메소드를 추가
+      init: function() {
+        const mainElem = document.createElement('div');
+        mainElem.style.color = this.color;
+        mainElem.innerHTML = this.number;
+        mainElem.classList.add('card');
+        document.body.appendChild(mainElem);
+      }
+    };
+
+    const card1 = new Card('1', 'green');
+    const card2 = new Card('7', 'blue');
+
+    console.log(card1);
+
+  </script>
+</body>
+</html>

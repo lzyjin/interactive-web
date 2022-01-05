@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Web</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+    body {
+      background-color: #222;
+    }
+    h1 { 
+      color: #fff;
+    }
+    .spaceship {
+      width: 150px;
+      height: 150px;
+      /* 축약형으로 background-size를 적을 때는 / 뒤에 가로 세로 를 적어주면 된다 */
+      /* 지금의 경우에는 cover를 사용해도 된다 */
+      background: url('images/sprite_spaceship.png') no-repeat 0 0 / auto 150px;
+
+      /* animation: spaceship-ani .7s infinite steps(17); */
+      /* 17은 5100 / 300 한 것  */
+      /* animation-timing-function: steps(17); */
+      /* animation-timing-function: 중간 상태들의 전환을 어떤 시간간격으로 진행할지 지정합니다. */
+
+      /* reverse를 사용해서 왼쪽으로 돌아가게 할 수도 있다 */
+      animation: spaceship-ani .7s infinite steps(17) reverse;
+    }
+    @keyframes spaceship-ani {
+      /* from {
+        생략가능
+      } */
+      to{
+        /* -2550px은 -5100px대신 이미지크기를 반으로 줄여서 사용했으니까  */
+        /* 마이너스값인 이유는 div는 고정되어있고 백그라운드 이미지가 왼쪽으로(x축으로는 -값)움직여야 하니까 */
+        background-position: -2550px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 
+    웹에서 100x100이미지를 보여줄거라면 실제 이미지 크기는 200x200크기로 만들어서 줄여서 보여줌 
+    => 고해상도 디스플레이에서 선명하게 보임  
+  -->
+  <h1>FrameByFrame Animation</h1>
+  <!-- 이 이미지를 스프라이트 이미지라고 부른다 -->
+  <div class="spaceship"></div>
+
+  <!-- gif로 하면 편한거을 왜 이렇게 하냐?
+    => gif는 투명이 안된다 (알파채널) 
+    => css animation속성을 사용하면 코드로 세세하게 애니메이션을 조작할 수 있는 장점이 있다
+  -->
+</body>
+</html>

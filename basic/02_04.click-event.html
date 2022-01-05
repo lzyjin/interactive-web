@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Web</title>
+  <style>
+    .stage {
+      overflow: hidden;
+      background-color: gold;
+      width: 100vw;
+      height: 75vw;
+      position: relative;
+    }
+    .ilbuni {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      cursor: pointer;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+      animation: moving infinite alternate;
+    }
+    .ilbuni.a {
+      background-image: url(images/ilbuni_0.png);
+      left: 5%;
+      bottom: 5%;
+      animation-duration: 2s;
+    }
+    .ilbuni.b {
+      background-image: url(images/ilbuni_1.png);
+      left: 10%;
+      bottom: 25%;
+      animation-duration: 3s;
+    }
+    .ilbuni.c {
+      background-image: url(images/ilbuni_2.png);
+      left: 2%;
+      bottom: 50%;
+      animation-duration: 4s;
+    }
+
+    @keyframes moving {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(90vw);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="stage">
+    <div class="ilbuni a"></div>
+    <div class="ilbuni b"></div>
+    <div class="ilbuni c"></div>
+  </div>
+
+  <script>
+    // 움직이는 일분이를 클릭해서 없애라! 
+    (function() {
+      const ilbuniGroup = document.querySelectorAll('.ilbuni');
+      const stage = document.querySelector('.stage');
+
+      function clickHandler() {
+        // console.log(this);
+        // 방법1 
+        // stage.removeChild(this);
+
+        // 방법2
+        // console.log(this.parentNode);
+        this.parentNode.removeChild(this);
+      }
+      ilbuniGroup.forEach((v, i) => {
+        v.addEventListener('click', clickHandler);
+      });
+    })();
+  </script>
+</body>
+</html>

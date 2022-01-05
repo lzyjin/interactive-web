@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Web - Object</title>
+</head>
+<body>
+  <h1>Object</h1>
+  
+  <script>
+    // 생성자 (constructor)
+    function Person(nickname, age) {
+      this.nickname = nickname;
+      this.age = age;
+      // 이 함수는 인스턴스가 모두 가지고 있어서 메모리를 점유하고있고, 동일한 형태이기 때문에 따로 분리해서 공유하게 할 수 있다
+      // this.introduce = function() {
+      //   console.log('안녕하세요? 저는 ' + this.nickname + '이고 나이는 ' + this.age + '살이에요.');
+      // }
+    }
+
+    // prototype은 Person 함수 하나에 딱 하나만 존재한다
+    // 인스턴스의 개수가 늘어난다고해도 인스턴스별로 각각 메소드 introduce를 가지고 있는게 아니므로 효율적이다.
+    Person.prototype.introduce = function() {
+      console.log('안녕하세요? 저는 ' + this.nickname + '이고 나이는 ' + this.age + '살이에요.');
+    }
+
+    // 인스턴스(instance)
+    // person1과 person2는 인스턴스
+    const person1 = new Person('일분이', 10);
+    const person2 = new Person('이분이', 8);
+
+    person1.introduce();
+    person2.introduce();
+
+
+    // 카드 만들기 
+    function Card(number, color) {
+      this.number = number;
+      this.color = color;
+    }
+
+    Card.prototype.width = 100;
+    Card.prototype.height = 150;
+
+    const card1 = new Card('1', 'green');
+    const card2 = new Card('7', 'blue');
+
+    console.log(card1.color);
+    console.log(card2.color);
+    console.log(card1.width);
+    console.log(card2.width);
+  </script>
+</body>
+</html>

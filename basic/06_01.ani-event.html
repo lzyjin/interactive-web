@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transition/Animation Event</title>
+  <style>
+    .ball {
+      position: absolute;
+      left: 0;
+      top: 0;
+      /* margin: -15px 0 0 -15px; */
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: red;
+      transition: 1s;
+    }
+    .ball.end {
+      background: teal;
+    }
+  </style>
+</head>
+<body>
+  <h1>event: transitionstart, transitionend</h1>
+  <div class="ball"></div>
+  <script>
+    const ballElem = document.querySelector('.ball');
+    window.addEventListener('click', function(e) {
+      // console.log(e.clientX, e.clientY);
+      ballElem.style.transform = 'translate3d(' + (e.clientX - 15) + 'px, ' + (e.clientY - 15) + 'px, 0';
+    });
+
+    // ballElem.addEventListener('transitionend', function(e) {
+    ballElem.addEventListener('transitionstart', function(e) {
+
+      ballElem.classList.add('end');
+
+      // 이 트랜지션이 재생되는데 걸리는 시간을 말한다
+      // => transition-duration
+      console.log(e.elapsedTime);
+
+      // 트랜지션이 발생한 css속성
+      console.log(e.propertyName);
+    });
+  </script>
+</body>
+</html>

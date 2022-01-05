@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Web - 이벤트 위임 보강</title>
+  <style>
+    .menu {
+      background-color: rgb(203, 203, 203);
+      width: 80vw;
+      height: 30vw;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .menu-btn {
+      border: 5px solid #fff;
+      border-radius: 10px;
+      width: 200px;
+      height: 100px;
+      background-color: gold;
+    }
+    .menu-btn img {
+      width: 50px;
+      height: 50px;
+      /* pointer-events: none; */
+    }
+    .menu-btn span {
+      /* pointer-events: none; */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="menu">
+    <!-- <div class="menu-btn" data-value="1">
+      <img class="icon" src="images/ilbuni_0.png" alt="일분이1">
+      <span class="btn-label">일분이 1</span>
+    </div>
+    <div class="menu-btn" data-value="2">
+      <img class="icon" src="images/ilbuni_1.png" alt="일분이2">
+      <span class="btn-label">일분이 2</span>
+    </div>
+    <div class="menu-btn" data-value="3">
+      <img class="icon" src="images/ilbuni_2.png" alt="일분이3">
+      <span class="btn-label">일분이 3</span>
+    </div> -->
+  </div>
+
+  <script>
+    // (function() {
+    //   const btns = document.querySelectorAll('.menu-btn');
+    //   function clickBtnHandler() {
+    //     console.log(this);
+    //   }
+      
+    //   for(let i=0; i < btns.length; i++) {
+    //     btns[i].addEventListener('click', clickBtnHandler);
+    //   }
+    //   // 위 for문을 풀어쓰면 아래인데
+    //   // addEventListener가 많아지면 메모리 점유율이 높아져 성능이 안좋아진다
+    //   // btns[0].addEventListener('click', clickBtnHandler);
+    //   // btns[1].addEventListener('click', clickBtnHandler);
+    //   // btns[2].addEventListener('click', clickBtnHandler);
+    // })();
+
+    (function() {
+      const menu = document.querySelector('.menu');
+
+      function clickHandler(event) {
+
+        // console.log(this); // menu
+        // console.log(event.currentTarget); // menu
+        console.log(event.target); // 클릭한 요소
+
+        // console.log(event.target.getAttribute('data-value')); 
+        // console.log(event.target.dataset); 
+        // console.log(event.target.dataset.value); 
+        // menu-btn안의 이미지나 글자를 클릭하면 data-value속성을 가지고 있지 않기 때문에 null이 출력된다 -> 문제 발생
+
+        // -> 방법1. 클릭 이벤트 타겟에 영향이 없게 하기 위해 클릭이 안됐으면 좋겠는 것들을 css pointer-events: none
+        // 하지만 클릭안되고싶은 요소 안에 클릭되게할 요소가 들어있으면 이 방법을 사용하면 안된다
+
+
+        // 방법2. 또는 부모노드로 타고 올라가서 반별하기
+        let elem = event.target;
+        while ( !elem.classList.contains('menu-btn') ) {
+          elem = elem.parentNode;
+
+          // console.log(elem.dataset.value); // menu영역(회색영역)을 클릭하면 에러가 난다. 
+  
+          if( elem.nodeName == 'BODY' ) {
+            elem = null;
+            return;
+          }
+
+        }
+        console.log(elem.dataset.value);
+      }
+
+      menu.addEventListener('click', clickHandler);
+
+      // 이벤트 위임의 장점 또한가지
+      // menu-btn이 동적으로 생겨나도 
+      // menu에 이벤트를 걸었기때문에 클릭이벤트가 원하는대로 잘 발생한다 
+      window.addEventListener('click', () => {
+        const htmlStr = `
+        <div class="menu-btn" data-value="1">
+          <img class="icon" src="images/ilbuni_0.png" alt="일분이1">
+          <span class="btn-label">일분이 1</span>
+        </div>
+        <div class="menu-btn" data-value="2">
+          <img class="icon" src="images/ilbuni_1.png" alt="일분이2">
+          <span class="btn-label">일분이 2</span>
+        </div>
+        <div class="menu-btn" data-value="3">
+          <img class="icon" src="images/ilbuni_2.png" alt="일분이3">
+          <span class="btn-label">일분이 3</span>
+        </div>`;
+        menu.innerHTML = htmlStr;
+      });
+
+    })();
+  </script>
+</body>
+</html>
