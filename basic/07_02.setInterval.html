@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>setTimeout</title>
+  <title>setInterval</title>
   <style>
     .btn {
       font-size: 2rem;
@@ -20,7 +20,9 @@
     function sample() {
       console.log('sample');
     }
-    timeId = setTimeout(sample, 3000);
+    // timeId = setInterval(sample);
+    // timeId = setInterval(sample, 1000);
+    timeId = setInterval(sample, 1000 / 60);
 
     // console.log(timeId);
 
@@ -29,6 +31,7 @@
 
 
     btn.addEventListener('click', function() {
+      // 반복 멈춤
       clearTimeout(timeId);
     });
   </script>

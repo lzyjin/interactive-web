@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>setTimeout</title>
+  <title>requestAnimationFrame</title>
   <style>
     .btn {
       font-size: 2rem;
@@ -12,24 +12,33 @@
   </style>
 </head>
 <body>
+  <!-- requestAnimationFrame는 IE 10부터 지원 -->
   <button class="btn">취소</button>
+
   <script>
     let timeId;
+    let n = 0;
     const btn = document.querySelector('.btn');
 
     function sample() {
-      console.log('sample');
+      n++;
+
+      // console.log('sample');
+      console.log(n);
+
+      if( n >= 200 ) {
+        return;
+      }
+
+      // 최대 1ms(1/1000s)로 제한되며 1초에 60번 동작 
+      timeId = requestAnimationFrame(sample);
     }
-    timeId = setTimeout(sample, 3000);
-
-    // console.log(timeId);
-
-    // 3초가 지나기 전에 clear해버려서 콘솔에 아무것도 출력되지 않음
-    // clearTimeout(timeId);
-
+    
+    // timeId = requestAnimationFrame(sample);
+    sample();
 
     btn.addEventListener('click', function() {
-      clearTimeout(timeId);
+      cancelAnimationFrame(timeId);
     });
   </script>
 </body>
