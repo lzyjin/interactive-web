@@ -1,0 +1,79 @@
+body {
+  font-family: 'Apple SD Gothic Neo', 'Roboto', 'Roboto', 'Noto Sans KR', NanumGothic, 'Malgun Gothic', sans-serif;
+  -webkit-overflow-scrolling: touch;
+  color: #555;
+  background: #fff000;
+
+  /* 스크롤할 양을 만들기 위해 높이를 줌 */
+  height: 500vw;
+}
+.world {
+  /* 3d 공간으로 만듦 */
+  perspective: 1000px;
+  /* 스크롤을 내려도 위치가 그대로임 */
+  position: fixed;
+
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+}
+.stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* 중간에 껴있는애가 자식한테 부모의 3d를 전파 */
+  /* ie 지원 x */
+  transform-style: preserve-3d;
+}
+.house {
+  transform-style: preserve-3d;
+  width: 100vw;
+  height: 100vh;
+  transform: translateZ(-490vw);
+}
+.wall {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.8);
+}
+.wall-content {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wall-title {
+  font-size: 5rem;
+}
+.wall-left {
+  /* 1000vw의 절반만큼 이동해야 .wall-front에 딱 붙는 벽이 완성 */
+  /* left: -500vw; */
+  width: 1000vw;
+  /* transform: rotateY(90deg); */
+  transform: rotateY(90deg) translateZ(-500vw);
+
+  background: #f8f8f8;
+}
+.wall-right {
+  /* left: -400vw; */
+  width: 1000vw;
+
+  /* .wall-left와 동일한 위치에서 얘기준 z축으로 100vw만큼 이동시키면 완성  */
+  left: -500vw;
+  transform: rotateY(90deg) translateZ(100vw);
+
+  background: #f8f8f8;
+}
+.wall-front {
+  
+}
+.wall-front-a { transform: translateZ(300vw); }
+.wall-front-b { transform: translateZ(50vw); }
+.wall-front-c { transform: translateZ(-200vw); }
+.wall-front-d { transform: translateZ(-500vw); }
