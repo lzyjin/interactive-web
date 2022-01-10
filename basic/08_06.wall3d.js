@@ -21,7 +21,7 @@
     // }
     
     const scrollPer = window.pageYOffset / maxScrollValue;
-    console.log(window.pageYOffset);
+    // console.log(window.pageYOffset);
 		const zMove = scrollPer * 970 - 490;
 		houseElem.style.transform = 'translateZ(' + zMove + 'vw)';
 
@@ -57,6 +57,10 @@
   // 문서가 로드되자마자 maxScrollValue를 초기화하기위해 함수 호출
   resizeHandler();
 
-  new Character();
+  stageElem.addEventListener('click', function(e) {
+    const character = new Character({
+      xPos: e.clientX / window.innerWidth * 100
+    });
+  });
 
 })();

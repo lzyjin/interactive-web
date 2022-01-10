@@ -97,7 +97,7 @@ body {
 /* character */
 .character {
   position: absolute;
-  left: 12%;
+  /* left: 12%; */
   bottom: 5%;
   /* 캐릭터의 가로세로 비율은 유지되며 크기만 커지거나 작아진다 */
   /* 그렇게 하려면 단위를 동일하게 해야함 */
