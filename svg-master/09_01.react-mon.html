@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>09_01.리액트 몬스터 만들기 - 눈알 좌우 움직임, 눈깜빡임</title>
+  <style>
+    .react-mon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 200px;
+      height: 200px;
+      margin: auto;
+    }
+    .cls-1{
+      fill:none;
+      stroke:#61dafb;
+      stroke-miterlimit:10;
+      stroke-width:15px;
+    }
+    @keyframes eye-ball-ani {
+      from {
+        transform: translateX(-20px);
+      }
+      to {
+        transform: translateX(20px);
+      }
+    }
+    @keyframes eye-ani {
+      /* 80% 구간까지는 눈을 뜨고 있고 = scaleY(1), 20% 구간동안 눈을 깜빡여라 */
+      80% {
+        transform: scaleY(1);
+      }
+      90% {
+        /* 눈이 완전히 감기는게 아니라 실눈뜬것처럼 표현하려고 0이 아니라 0.01로   */
+        transform: scaleY(0.01);
+      }
+      100% {
+        transform: scaleY(0.01);
+      }
+    }
+    .eye {
+      animation: eye-ani 2s alternate infinite;
+      transform-origin: center center;
+    }
+    .eye-ball {
+      animation: eye-ball-ani 1s infinite alternate linear;
+      /* 검은 눈동자가 흰색부분을 삐져나가는것을 방지하려면 css의 overflow:hidden 같은 역할: 하얀 눈부분 영역을 마스크를 만들어야한다 */
+      /* mask 적용할 애를 g태그로 묶고, 만든 mask를 적용시킨다 */
+    }
+  </style>
+</head>
+<body>
+  <svg class="react-mon" viewBox="0 0 327 291.84">
+    <defs>
+      <mask id="eye-mask">
+        <!-- <ellipse cx="163.5" cy="145.92" rx="28" ry="14" fill="#fff"/> -->
+        <!-- 마스크 영역에도 눈 깜빡하는 효과를 넣기 위해, eye-ani 애니메이션이 적용되어있는 eye 클래스를 추가 -->
+        <ellipse class="eye" cx="163.5" cy="145.92" rx="28" ry="14" fill="#fff"/>
+      </mask>
+    </defs>
+    <ellipse class="cls-1" cx="163.5" cy="145.92" rx="156" ry="60"/>
+    <ellipse class="cls-1" cx="384" cy="384" rx="156" ry="60" transform="matrix(.5 -.87 .87 .5 -361.05 286.47)"/>
+    <ellipse class="cls-1" cx="384" cy="384" rx="60" ry="156" transform="rotate(-30 -170.504 676.413)"/>
+    <circle cx="163.5" cy="145.92" r="31" fill="#61dafb"/>
+    <ellipse class="eye" cx="163.5" cy="145.92" rx="28" ry="14" fill="#fff"/>
+    <g mask="url(#eye-mask)">
+      <circle class="eye-ball" cx="163.5" cy="145.92" r="13" fill="#333"/>
+    </g>
+  </svg>
+  
+</body>
+</html>

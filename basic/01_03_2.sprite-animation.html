@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Web</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+    body {
+      width: 100vw;
+      height: 100vh;
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .dragon-slayer {
+      width: 360px;
+      height: 338px;
+      background: url('images/dragon-slayer.png') no-repeat 0 0 / auto 338px;
+
+      animation: ani 0.7s infinite steps(5);
+    }
+    @keyframes ani {
+      to{
+        background-position: -1920px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="dragon-slayer"></div>
+
+</body>
+</html>

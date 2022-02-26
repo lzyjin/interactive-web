@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01-03. SVG의 크기 설정</title>
+  <style>
+    body {
+      margin: 0;
+    }
+    svg {
+      background: #ddd;
+      /* width: 500px;
+      height: 500px; */
+    }
+  </style>
+</head>
+<body>
+  <!-- <svg width="500" height="500"> -->
+
+  <svg viewBox="0 0 500 500">
+  <!-- <svg viewBox="0 0 1000 1000"> -->
+  <!-- <svg viewBox="0 0 100 100"> -->
+    <rect x="0" y="0" width="100" height="100"></rect>
+  </svg>
+
+  <p>svg 태그에 크기 설정을 하지 않으면 디폴트로 300x150</p>
+  <p>svg의 크기를 반응형처럼 하려면 width height가 아니라 viewBox</p>
+  <p>&lt;svg viewBox="0 0 500 500">&lt;/svg&gt; 의미: 0 0좌표에 가로500 세로500 크기의 뷰박스를 세팅</p>
+  <p>viewBox의 크기에 대해 상대적인 비율로 내부 요소들의 크기가 결정된다.</p>
+</body>
+</html>

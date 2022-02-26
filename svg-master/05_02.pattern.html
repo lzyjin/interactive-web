@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>05_02. 패턴 적용하기</title>
+  <style>
+    body {
+      margin: 0;
+    }
+    .svg {
+      width: 500px;
+      height: 500px;
+      background: #ddd;
+    }
+    .svg2 {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: #ddd;
+    }
+    .pattern-circle {
+      fill: orange;
+    }
+    .bg-rect {
+      /* fill: url(#bg-pattern); */
+    }
+  </style>
+</head>
+<body>
+  <p>패턴 : &lt;pattern&gt;</p>
+  <p>x: 시작점의 x좌표, y: 시작점의 y좌표, width="0.1": 1을 100으로 생각하면 0.1은 10%, 즉 가로 10개의 패턴이 들어간다는 뜻</p>
+  <!-- <svg class="svg">
+    <defs>
+      <pattern id="bg-pattern" x="0" y="0" width="0.2" height="0.2">
+        <circle cx="50" cy="50" r="50" class="pattern-circle"></circle>
+      </pattern>
+    </defs>
+    <rect class="bg-rect" x="0" y="0" width="100%" height="100%" fill="url(#bg-pattern)"></rect>
+  </svg> -->
+
+  <!-- 혹은 -->
+
+  <!-- <svg class="svg">
+    <defs>
+      <pattern id="bg-pattern" x="0" y="0" width="0.1" height="0.1">
+        <circle cx="25" cy="25" r="25" class="pattern-circle"></circle>
+      </pattern>
+    </defs>
+    <rect class="bg-rect" x="0" y="0" width="100%" height="100%" fill="url(#bg-pattern)"></rect>
+  </svg> -->
+
+  
+
+  <!-- 그러면 창크기에 상관없이 딱맞는 원패턴을 채우고싶으면? viewBox를 사용하자 -->
+
+  <!-- <svg class="svg2" viewBox="0 0 500 500">
+    <defs>
+      <pattern id="bg-pattern" x="0" y="0" width="0.1" height="0.1">
+        <circle cx="25" cy="25" r="25" class="pattern-circle"></circle>
+      </pattern>
+    </defs>
+    <rect class="bg-rect" x="0" y="0" width="100%" height="100%" fill="url(#bg-pattern)"></rect>
+  </svg> -->
+
+  <!-- 혹은 -->
+
+  <svg class="svg2" viewBox="0 0 1000 1000">
+    <defs>
+      <pattern id="bg-pattern" x="0" y="0" width="0.1" height="0.1">
+        <circle cx="50" cy="50" r="50" class="pattern-circle"></circle>
+      </pattern>
+    </defs>
+    <rect class="bg-rect" x="0" y="0" width="100%" height="100%" fill="url(#bg-pattern)"></rect>
+  </svg>
+</body>
+</html>

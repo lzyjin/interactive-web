@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03_03. path로 그리기</title>
+  <style>
+    .shapes {
+      width: 600px;
+      height: 400px;
+      background: #ddd;
+    }
+    path {
+      stroke: tomato;
+      stroke-width: 5px;
+      fill: transparent;
+    }
+  </style>
+</head>
+<body>
+  <p>path로는 직선도 그릴수 있고, 도형도 그릴 수 있다.</p>
+  <p>일러스트레이터에서 펜툴로 그린것은 대부분 path가 된다</p>
+  <p>이동시킬 첫 위치 지정(처음 점찍을 위치로 이동시킴): d=", 첫위치 x y"</p>
+  <p>L: Line(직선) </p>
+  <p>H: 가로(수평) 직선 </p>
+  <p>V: 세로(수직) 직선 </p>
+  <p>Z: 라인 끝내기(닫기) -> 다각형 완성 </p>
+  <p>C: 곡선</p>
+  <p>d="M 100 150 C 100 150, 300 50, 500, 250" 의미 M위치로 이동해서 시작해라. C 곡선만들어라 첫번째점 두번째점 잇고 세번째점위치가 곡률정하는 점</p>
+
+  <svg class="shapes" xmlns="http://www.w3.org/2000/svg">
+    <!-- <path d="M 300 200 L 500 100 H 50 V 300 Z"></path> -->
+
+    <path d="M 100 150 C 100 150, 300 50, 500, 250"></path>
+  </svg>
+</body>
+</html>

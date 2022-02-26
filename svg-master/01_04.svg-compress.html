@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01_04.SVG 압축하기</title>
+</head>
+<body>
+  <p>svg 파일의 용량을 줄이기 위해 압축한다.</p>
+  <p>사이트: svgomg</p>
+  <p>svg 파일을 업로드할 수도 있고, 코드를 복사해서 Paste markup에 붙여넣을 수도 있다.</p>
+  <p>압축된 svg를 코드를 복사해올수도 있고, 파일을 다운로드할 수도 있다.</p>
+
+  <h1>원본</h1>
+  <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 571 625.5">
+    <defs>
+      <style>
+        .cls-1, .cls-2 {
+          fill: none;
+          stroke: #000;
+          stroke-miterlimit: 10;
+        }
+  
+        .cls-1 {
+          stroke-width: 40px;
+        }
+  
+        .cls-2 {
+          stroke-width: 30px;
+        }
+      </style>
+    </defs>
+    <title>face</title>
+    <circle class="cls-1" cx="286.5" cy="354.5" r="251"/>
+    <g>
+      <circle cx="175" cy="380.5" r="42.5"/>
+      <circle cx="397" cy="380.5" r="42.5"/>
+    </g>
+    <path class="cls-2" d="M529,540.16a181.3,181.3,0,0,1-135.48,60.59H393a181.3,181.3,0,0,1-135.48-60.59" transform="translate(-107 -64)"/>
+    <ellipse cx="168.5" cy="210.5" rx="168.5" ry="121.5"/>
+    <ellipse cx="428.5" cy="198.5" rx="142.5" ry="123.5"/>
+    <ellipse cx="245.5" cy="103" rx="151.5" ry="103"/>
+  </svg>
+  
+
+  <h1>압축본</h1>
+  <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 571 625.5">
+    <circle cx="286.5" cy="354.5" r="251" style="stroke-width:40px;fill:none;stroke:#000;stroke-miterlimit:10"/>
+    <circle cx="175" cy="380.5" r="42.5"/>
+    <circle cx="397" cy="380.5" r="42.5"/>
+    <path d="M529 540.16a181.3 181.3 0 0 1-135.48 60.59H393a181.3 181.3 0 0 1-135.48-60.59" transform="translate(-107 -64)" style="stroke-width:30px;fill:none;stroke:#000;stroke-miterlimit:10"/>
+    <ellipse cx="168.5" cy="210.5" rx="168.5" ry="121.5"/>
+    <ellipse cx="428.5" cy="198.5" rx="142.5" ry="123.5"/>
+    <ellipse cx="245.5" cy="103" rx="151.5" ry="103"/>
+  </svg>
+</body>
+</html>

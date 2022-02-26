@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>06_01. stroke 애니메이션</title>
+  <style>
+    @keyframes dash-ani {
+      from {
+        stroke-dashoffset: 700;
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+    circle {
+      stroke: black;
+      stroke-width: 5;
+      fill: transparent;
+      
+      /* stroke-dasharray: 1; */
+      /* stroke-dasharray: 10; */
+      /* stroke-dasharray: 20; */
+      /* stroke-dasharray: 50; */
+      stroke-dasharray: 700;
+
+      /* stroke-dashoffset: 700; */
+      /* stroke-dashoffset: 0; */
+
+      animation: dash-ani 2s alternate infinite;
+    }
+    path {
+      stroke: black;
+      stroke-width: 5;
+      fill: transparent;
+      stroke-dasharray: 727;
+      /* stroke-dashoffset: 0; */
+      animation: dash-ani 2s infinite;
+    }
+  </style>
+</head>
+<body>
+  <svg viewBox="0 0 800 500">
+    <!-- <circle cx="400" cy="250" r="100"></circle> -->
+    <path d="M 50 400 C 50 400, 300 500, 400 400 C 400 400, 600 170, 700 300"></path>
+  </svg>
+
+  <script>
+    // stroke 길이 알아내기
+    console.log( document.querySelector('path').getTotalLength() ); // 726.1061401367188
+  </script>
+</body>
+</html>

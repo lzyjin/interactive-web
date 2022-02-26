@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07_01. smil 애니메이션의 기본적인 사용법</title>
+  <style>
+    body {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <p>smil 애니메이션은 애니메이션을 적용시킬 엘리먼트 안에 animate 태그를 적는다.</p>
+  <p>attributeName: 애니메이션을 적용시킬 속성, dur: 지속시간, to: 적용될 style, repeatCount: 애니메이션 반복 회수, fill: 애니메이션 fill-mode (forward를 freeze로 표현한다)</p>
+  <svg class="svg" viewBox="0 0 1000 1000">
+    <rect x="10" y="10" width="20%" height="20%">
+      <animate attributeName="x" dur="1s" to="700" repeatCount="3" fill="freeze"></animate>
+      <!-- <animate attributeName="x" dur="1s" to="700" repeatCount="indefinite"></animate> -->
+    </rect>
+  </svg>
+</body>
+</html>

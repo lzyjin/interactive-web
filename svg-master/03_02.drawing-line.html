@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03_02. 직선 그리기</title>
+  <style>
+    .shapes {
+      width: 600px;
+      height: 700px;
+      background: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <p>직선: &lt;line&gt;</p>
+  <p>x1: 선의 시작점 x좌표, x2: 선의 끝점 x좌표</p>
+  <p>y1: 선의 시작점 y좌표, y2: 선의 끝점 y좌표</p>
+  <p>선이라서 stroke가 필수로 필요하다</p>
+  
+  <br><br>
+  
+  <p>계속 잇는 직선: &lt;polyline&gt;</p>
+  <p>points 속성: 시작 x위치 y위치, x위치 y위치, x위치 y위치....</p>
+  <p>points="0 0, 200 100, 150 300" :점이 3개</p>
+
+  <br><br>
+
+  <p>polyline과 polygon의 차이점</p>
+  <p>둘다 점을 잇는 역할은 같지만, polygon은 마무리를 짓는다.</p>
+
+  <svg class="shapes" xmlns="http://www.w3.org/2000/svg">
+    <line x1="10" x2="400" y1="30" y2="300" stroke="blue" stroke-width="3"></line>
+
+    <!-- <polyline points="0 0, 200 100, 150 300" stroke="red" stroke-width="10"></polyline> -->
+
+    <polygon points="0 0, 200 100, 150 300" stroke="red" stroke-width="10"></polygon>
+  </svg>
+</body>
+</html>

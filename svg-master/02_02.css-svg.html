@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02_01.SVG에 CSS 적용하기-inline</title>
+</head>
+<body>
+  <p>svg내에 css와 스크립트 적을 때 style태그 바로 내부에<![CDATA[  ]]>를 적어 오류를 방지한다.</p>
+  <svg class="face" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 571 625.5">
+    <style>
+      .face {
+        width: 200px;
+        /* 중앙 정렬하는 방법 */
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        margin: auto;
+      }
+      .face_hair { 
+        fill: rgb(237, 91, 91);
+      }
+      .face_hair:nth-of-type(1) {
+        fill: rgb(232, 138, 229);
+      }
+      .face_hair:nth-of-type(2) {
+        fill: rgb(223, 123, 223);
+      }
+      .face_hair:nth-of-type(3) {
+        fill: rgb(255, 130, 174);
+      }
+      @keyframes eye-ani {
+        0% {
+          transform: scale(0.9);
+        }
+        100% {
+          transform: scale(1.1);
+        }
+      }
+      .face_eye {
+        animation: eye-ani 1s infinite alternate;
+        /* transform-origin: center center; */
+      }
+      .face_eye:nth-of-type(2) {
+        transform-origin: 175px 380.5px;
+      }
+      .face_eye:nth-of-type(3) {
+        transform-origin: 397px 380.5px;
+      }
+    </style>
+    <circle cx="286.5" cy="354.5" r="251" style="stroke-width:40px;fill:none;stroke:#000;stroke-miterlimit:10"/>
+    <circle class="face_eye" cx="175" cy="380.5" r="42.5"/>
+    <circle class="face_eye" cx="397" cy="380.5" r="42.5"/>
+    <path d="M529 540.16a181.3 181.3 0 0 1-135.48 60.59H393a181.3 181.3 0 0 1-135.48-60.59" transform="translate(-107 -64)" style="stroke-width:30px;fill:none;stroke:#000;stroke-miterlimit:10"/>
+    <ellipse class="face_hair" cx="168.5" cy="210.5" rx="168.5" ry="121.5"/>
+    <ellipse class="face_hair" cx="428.5" cy="198.5" rx="142.5" ry="123.5"/>
+    <ellipse class="face_hair" cx="245.5" cy="103" rx="151.5" ry="103"/>
+  </svg>
+</body>
+</html>

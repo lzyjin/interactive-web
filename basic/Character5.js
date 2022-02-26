@@ -38,8 +38,16 @@ function Character(info) {
   this.lastScrollTop = 0;
 
   // running속도
-  this.speed = 0.3;
+  this.speed = info.speed;
   this.xPos = info.xPos;
+
+  // 왼쪽인지 오른쪽인지
+  this.direction;
+  
+  // 좌우 이동중인지 아닌지
+  this.runningState = false;
+  
+  this.rafId;
 
   this.init();
 }
@@ -79,29 +87,83 @@ Character.prototype = {
     
     window.addEventListener('keydown', function(e) {
 
-      console.log('키다운');
+      // 키 다운이 반복되지 않도록 처음 딱 1번만 실행됌
+      if( self.runningState ) {
+        return;
+      }
 
       // console.log(e.key);
       if(e.key === 'ArrowLeft') {
-
-        // 방향전환
+        self.direction = 'left';
         self.mainElem.setAttribute('data-direction', 'left');
-        // 달림
         self.mainElem.classList.add('running');
+        self.run(self);
+        // self.run();
 
-        self.xPos -= self.speed;
-        // self.xPos = self.xPos - self.speed;
-        // 왼쪽으로 달리기 ( 현재 xposition값에서 speed를 뺀값을 재할당 -> left값이 점점 작아짐)
-        self.mainElem.style.left = self.xPos + '%';
-
+        self.runningState = true;
       } else if(e.key === 'ArrowRight') {
-
+        self.direction = 'right';
         self.mainElem.setAttribute('data-direction', 'right');
         self.mainElem.classList.add('running');
+        self.run(self);
+        // self.run();
+
+        self.runningState = true;
       }
     });
     window.addEventListener('keyup', function(e) {
       self.mainElem.classList.remove('running');
+      this.cancelAnimationFrame(self.rafId);
+      // console.log(self.runningState);
+      self.runningState = false;
     });
-  }
+  },
+
+  // 문제 : this가 character를 가리키다가 window를 가리키게 됌
+  // 해결 방법 1 : 함수의 매개변수로 전달해서 this를 살리는 방법
+  run: function(self) {
+    // const self = this;
+
+    if( self.direction == 'left' ) {
+      self.xPos -= self.speed;
+    } else if( self.direction = 'right' ) {
+      self.xPos += self.speed;
+    }
+    
+    // 좌우 이동할 때 벽을 넘어가지 않도록
+    if( self.xPos < 2 ) {
+      self.xPos = 2;
+    }
+    if( self.xPos > 88 ) {
+      self.xPos = 88;
+    }
+
+    self.mainElem.style.left = self.xPos + '%';
+
+    self.rafId = requestAnimationFrame(function() {
+      self.run(self);
+    });
+  },
+
+  // 해결 방법 2 : bind 메서드로 this를 직접 지정하기
+  // run: function() {
+  //   const self = this;
+
+  //   if( self.direction == 'left' ) {
+  //     self.xPos -= self.speed;
+  //   } else if( self.direction = 'right' ) {
+  //     self.xPos += self.speed;
+  //   }
+    
+  //   if( self.xPos < 2 ) {
+  //     self.xPos = 2;
+  //   }
+  //   if( self.xPos > 88 ) {
+  //     self.xPos = 88;
+  //   }
+
+  //   self.mainElem.style.left = self.xPos + '%';
+
+  //   self.rafId = requestAnimationFrame(self.run.bind(self));
+  // },
 };

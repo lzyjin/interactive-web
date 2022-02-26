@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03_04. Stroke 모양 조정하기</title>
+  <style>
+    .shapes {
+      width: 600px;
+      height: 400px;
+      background: #ddd;
+    }
+    path {
+      stroke: tomato;
+      stroke-width: 50px;
+      fill: transparent;
+
+      /* butt가 기본값 */
+      /* stroke-linecap: butt; */
+      stroke-linecap: round;
+      /* stroke-linecap: square; */
+
+      /* miter이 기본값 */
+      /* stroke-linejoin: miter; */
+      /* stroke-linejoin: round; */
+      stroke-linejoin: bevel;
+    }
+  </style>
+</head>
+<body>
+  
+  <svg class="shapes" xmlns="http://www.w3.org/2000/svg">
+    <path d="M 50 200 L 300 100 L 400 200"></path>
+  </svg>
+</body>
+</html>

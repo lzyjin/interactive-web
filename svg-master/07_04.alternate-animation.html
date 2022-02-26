@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07_04. CSS 애니메이션의 alternate를 SMIL로 구현하기</title>
+  <style>
+    body {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <svg class="svg" viewBox="0 0 1000 1000">
+    <rect x="10" y="10" width="20%" height="20%">
+      <!-- <animate attributeName="x" dur="1s" to="700" repeatCount="1" fill="freeze"></animate> -->
+
+      <!-- alternate 효과를 주고싶으면 to 대신 values 속성을 사용하고, 시작위치; 중간위치; 끝위치;를 적는다. -->
+      <!-- keyTimes: 키프레임(타임라인) 0이 시작, 0.5가 중간, 1이 끝. -->
+      <animate attributeName="x" dur="2s" values="0; 700; 0" keyTimes="0; 0.5; 1" repeatCount="indefinite" fill="freeze"></animate>
+
+
+
+      <!-- <animate attributeName="x" dur="2s" values="0; 700; 0" keyTimes="0; 0.2; 1" repeatCount="indefinite" fill="freeze"></animate> -->
+    </rect>
+  </svg>
+</body>
+</html>
