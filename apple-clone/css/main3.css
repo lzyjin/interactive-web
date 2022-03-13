@@ -1,0 +1,189 @@
+@charset 'utf-8';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;900&display=swap');
+
+html {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+}
+body {
+  overflow-x: hidden;
+  color: #1d1d1f;
+  letter-spacing: -0.05em;
+  background: #fff;
+}
+p {
+  line-height: 1.6;
+}
+a {
+  color: #1d1d1f;
+  text-decoration: none;
+}
+
+
+.global-nav,
+.local-nav { height: 44px; padding: 0  1rem; position: absolute; left: 0; width: 100%; }
+.global-nav-links,
+.local-nav-links  { height: 100%; max-width: 1000px; margin: 0 auto;  display: flex;  align-items: center; }
+.global-nav-links { justify-content: space-between; }
+.global-nav-item {}
+
+.global-nav { top: 0; }
+.local-nav { border-bottom: 1px solid #ddd; top: 44px; }
+.local-nav-links {}
+.local-nav-links .product-name { font-weight: 900; margin-right: auto; font-size: 1.4rem; }
+.local-nav-links a:not(.product-name) { margin-left: 10px; font-size: 0.8rem; }
+
+.scroll-section {
+  padding-top: 50vh;
+  border: 1px solid red;
+}
+
+#scroll-section-0 {  }
+#scroll-section-0 h1 {
+  font-size: 4rem;
+  text-align: center;
+}
+.main-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 3px 0;
+  height: 3em;
+  font-size: 2.5rem;
+
+  /* 추가된 부분 */
+  opacity: 0;
+  top: 35vh;
+}
+.main-message p {
+  line-height: 1.2;
+  font-weight: bold;
+  text-align: center;
+}
+.main-message small {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 0.5em;
+}
+#scroll-section-2 .main-message {
+  font-size: 3.5rem;
+}
+#scroll-section-2 .desc-message {
+  font-weight: bold;
+  width: 50%;
+}
+/* 추가된 부분 */
+#scroll-section-2 .b {
+  top: 10%;
+  left: 40%;
+}
+#scroll-section-2 .c {
+  top: 15%;
+  left: 45%;
+}
+
+.pin {
+  width: 1px;
+  height: 100px;
+  background: #000;
+}
+.description {
+  font-size: 1.2rem;
+  color: #888;
+  padding: 0 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.description strong {
+  color: #000;
+  float: left;
+  margin-right: 0.2em;
+  font-size: 3rem;
+}
+.mid-message {
+  max-width: 1000px;
+  margin: 0 auto;
+  font-size: 2rem;
+  color: #888;
+  padding: 0 1rem;
+}
+.mid-message strong {
+  color: #000;
+}
+.canvas-caption {
+  color: #888;
+  padding: 0 1rem;
+  font-size: 1.2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffa600;
+  height: 7rem;
+}
+/* 폰트사이즈: rem단위 사용
+높이, 마진, 등등: em단위 사용
+이유: em을 사용하면 현재 나의 폰트사이즈의 배수로 생각하면 되니까 편하니까 ( 현재 나(요소)의 폰트사이즈를 1이 됌 ) */
+
+/* 
+  rem은 상대단위이긴 하지만 고정값
+  vw는 창크기에 따라 유연하게 변동되는값
+  굵직한 큰 폰트는 vw, 설명텍스트는 rem 이런식으로 쓰면 좋다
+  이건 디자인에 따라 설정하면 된다
+ */
+
+/* 모바일용 사이즈 기준으로 폰트사이즈를 정하고, 미디어쿼리로 pc용 사이즈를 정한다 */
+
+.sticky-elem {
+  position: fixed;
+  /* top값 삭제 */
+  /* top: 0; */
+  left: 0;
+  width: 100%;
+  display: none;
+}
+#show-scene-0 #scroll-section-0 .sticky-elem,
+#show-scene-1 #scroll-section-1 .sticky-elem,
+#show-scene-2 #scroll-section-2 .sticky-elem,
+#show-scene-3 #scroll-section-3 .sticky-elem {
+  display: block;
+}
+
+@media (min-width: 1024px) {
+  #scroll-section-0 h1 {
+    /* 창사이즈에 따라 폰트사이즈가 자연스럽게 변하도록 vw단위를 사용 */
+    font-size: 9vw;
+  }
+  .main-message {
+    font-size: 4vw;
+  }
+  .description {
+    font-size: 2rem;
+  }
+  .description strong {
+    font-size: 6rem;
+  }
+  #scroll-section-2 .main-message {
+    font-size: 6vw;
+  }
+  #scroll-section-2 .main-message small {
+    font-size: 1.5vw;
+  }
+  #scroll-section-2 .desc-message {
+    width: 20%;
+  }
+  .mid-message {
+    font-size: 4vw;
+  }
+  /* 추가된 부분 */
+#scroll-section-2 .b {
+  top: 20%;
+  left: 53%;
+}
+#scroll-section-2 .c {
+  top: 55%;
+}
+}
